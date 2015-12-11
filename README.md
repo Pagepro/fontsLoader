@@ -1,87 +1,69 @@
-# SASSERPLATE
+# FontsLoader
 
-
-## main.scss
-
-* variables - colors, fonts (with imports), sizes
-* helpers - additional classes
-* typography - default fonts, margins and colors
-* forms - forms
-* layouts - page layouts, main sections
-* components - elements inside main sections
-* vendor - css for vendor libraries
-* media-queries 
-* print
-
-
-We can add additional files like:
-* buttons - buttons
-* tables - tables
-* alerts - alerts
-* popups - popups
-
+###Benefits
+* Displays text after html is loaded
+* Get rid of [FOIT](https://css-tricks.com/fout-foit-foft/)
 
 ## Requirements
-1. node & npm
-2. ruby & compass
-3. **grunt-cli** node package installed globally:
-`npm install -g grunt-cli`
+1. [jQuery](https://jquery.com/)
+2. [FontFaceObserver](https://github.com/bramstein/fontfaceobserver)
 
-## Installation
+##Installation
 
-```shell
-cd package_directory
-npm install
+###Step 1: Link plugins file
+
+```html
+<script src="/js/fontfaceobserver.js"></script>
+<script src="/js/fontsloader.js"></script>
 ```
 
-## Grunt Tasks
+###Step 2: Set up css styles
 
-### Default Task 
-
-This task is used for development. 
-What it does?
-1. Compiles src/sass files into CSS (static/css).
-2. Copies src/js files into JS (static/js).
-3. Running LiveReload that allows refreshing CSS files without browser refresh [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch#optionslivereload).
-4. Running local sever of static files [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect).
-
-```shell
-grunt
+```css
+body {
+    font-family: 'Arial';
+}
+.fonts-loaded body {
+    font-family: 'Open Sans';
+}
+.fonts-loaded .special {
+    font-family: 'Roboto'
+}
 ```
 
-#### Options
+###Step 3: Call function in javascript
 
-##### Port
-
-Type: `Integer`  
-Default: `8000`
-
-The port on which the webserver will respond. The task will fail if the specified port is already in use. You can use the special values `0` or `'?'` to use a system-assigned port.
-
-```shell
-grunt --port 8011
+```javascript
+$(document).ready(function(){
+  $('html').fontLoader({
+        fonts: {
+            'Open Sans': [200, 400, 600, 700],
+            'Roboto': [100, 300, 400]
+        },
+        fontLoadedClass: 'fonts-loaded'
+    });
+});
 ```
 
-### Compress Task
+##Configuration options
 
-This task will optymalize (compress) images.
 
-```shell
-grunt compress
+**fonts**
+Objects with font fmaily name as key and array of weights as value
+```
+default: 'Arial': [400]
+options: fonts
 ```
 
-### Compile Task
-
-This task will only compile SASS (src/sass) files into CSS files (static/css).
-
-```shell
-grunt compile
+**fontLoadedClass**
+Fonts Loaded Class name
+```
+default: 'fonts-loaded'
+options: class name
 ```
 
-### Uglify Task
+##Licenses
 
-This task will uglify and compress javascripts from src/js into static/js/app.min.js.
-
-```shell
-grunt uglify
-```
+FontFaceObserver
+Copyright 2014-2015 Bram Stein.
+https://github.com/bramstein/fontfaceobserver
