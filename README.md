@@ -49,7 +49,7 @@ $(document).ready(function(){
 
 
 **fonts**
-Objects with font fmaily name as key and array of weights as value
+Objects with font family names as key and array of weights as value
 ```
 default: 'Arial': [400]
 options: fonts
@@ -65,5 +65,7 @@ options: class name
 ##Licenses
 
 FontFaceObserver
+
 Copyright 2014-2015 Bram Stein.
+
 https://github.com/bramstein/fontfaceobserver
