@@ -44,6 +44,8 @@ $(document).ready(function(){
     });
 });
 ```
+[DOC for @pagepro users](https://docs.google.com/a/pagepro.pl/document/d/1yh0CPeksutxzDg-zvwk_1z1UkShT1CG8iX8ACsCz8nQ/edit?usp=sharing)
+[Presentation](https://docs.google.com/a/pagepro.pl/presentation/d/1W3S8i6XI6cwFdDq7IzGDWKau9FsKf0GUiRjlkcVAFPk/edit?usp=sharing)
 
 ##Configuration options
 
